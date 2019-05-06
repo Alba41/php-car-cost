@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body:before {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../assets/Marque.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+.res {
+    position: absolute;
+    top: 50%;
+    left: 200%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    height: 700px;
+    padding: 60px 40px;
+    box-sizing: border-box;
+    background: rgba(0, 80, 171, 0.9);
+}
+
+.calcul-form {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 900px;
+    padding: 60px 40px;
+    box-sizing: border-box;
+    background: rgba(0, 80, 171, 0.9);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.calcul-form h2, h1, h4 {
+    margin: 0;
+    padding: 0 0 20px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.calcul-form p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #fff;
+}
+
+.calcul-form input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.calcul-form input[type="text"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.calcul-form input[type="text"]::placeholder {
+    color: white;
+}
+
+.calcul-form button[type="submit"] {
+    height: 30px;
+    width: 250px;
+    color: #fff;
+    font-size: 15px;
+    background: rgba(24, 49, 171, 0.77);
+    cursor: pointer;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-top: 5%;
+    margin-left: 15%
+}
+
+.calcul-form button[type="submit"]:hover {
+    background: rgba(9, 65, 171, 0.77);
+
+}
+
+.calcul-form a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Info-bulle */
+.infobulle {
+    text-decoration:none;
+    position:relative;
+}
+.infobulle span {
+    display:none;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    color:white;
+    background-color: #0050ab;
+    font-size:10px;
+    font-style:italic;
+}
+
+.infobulle img
+{
+    width: 25px;
+    height: 25px;
+}
+
+.infobulle span img {
+    float:right;
+    margin:0px 6px 6px 0;
+}
+
+.infobulle:hover span
+{
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1000;
+    width:250px;
+    /* max-width:200px; */
+    min-height:20px;
+    border:1px solid black;
+    margin-top:12px;
+    margin-left:32px;
+    overflow:hidden;
+    padding:8px;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}

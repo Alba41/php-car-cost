@@ -29,15 +29,15 @@ class Form
         return "<{$this->surround}>$html</{$this->surround}>";
     }
 
+
     /**
-     * @param $total_cost
+     * @param $name
+     * @param $placeholder
      * @return string
-     *
-     * Permet de créer un cadre de texte
      */
-    public function input($total_cost)
+    public function input($name, $placeholder)
     {
-        return $this->surround('<input type="text" class="form-control" name="' . $total_cost . '">');
+        return $this->surround('<input type="text" class="form-control" name="' . $name . '" placeholder="' . $placeholder . '" required>');
     }
 
     /**
@@ -45,6 +45,16 @@ class Form
      */
     public function calculate()
     {
-        return '<button type ="submit" class="btn btn-dark" >Calculer</button>';
+       return '<button type="submit" name="calculate">Calculer</button>';
+        //return '<input type="submit" name="" value="Sign In">';
+    }
+
+    /**
+     * @param $span
+     * @return string
+     */
+    public function infobubble($span, $know)
+    {
+        return '<h3 class="infobulle"><img src="assets/pic_aide.png" alt=" ? " /><span>Cliquez ' . $span . ' pour '. $know . '</span></h3>';
     }
 }

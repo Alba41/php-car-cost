@@ -26,7 +26,7 @@ class Calcul
         if (is_numeric($verif_data)) {
             return $verif_data;
         } else
-            return ("{$verif_data} + 'doit être un chiffre'");
+            return ("<p>{$verif_data} + 'doit être un chiffre'</p>");
         /* à modifier*/
     }
 
@@ -41,15 +41,24 @@ class Calcul
     function verif_fuel_cost($conso, $fuel_price, $total_km, $time)
     {
         if (empty($conso))
-            return "Veuillez indiquer la consomation dud vehicule";
+            return "<p>Veuillez indiquer la consomation du vehicule</p>";
         else if (empty($fuel_price))
-            return "Veuillez indiquer le prix du carburant";
+            return "<p>Veuillez indiquer le prix du carburant</p>";
         else if (empty($total_km))
-            return "Veuillez indiquer le prix du carburant";
+            return "<p>Veuillez indiquer le prix du carburant</p>";
         if (empty($time))
-            return "Veuillez indiquer la durée d'utilisation du véhicule";
+            return "<p>Veuillez indiquer la durée d'utilisation du véhicule</p>";
         else
             return false;
+    }
+
+    function vehi_cost($init, $sell)
+    {
+        if (is_numeric($init) && is_numeric($sell)) {
+            $vehi_price = $init - $sell;
+            return ("<p>{$vehi_price} €</p>");
+        } else
+            return "<p>/!\ Le prix du véhicule ainsi que son prix de revente peuvent uniquement être des nombres</p>";
     }
 
     /**
@@ -64,9 +73,9 @@ class Calcul
     {
         if (is_numeric($conso) && is_numeric($fuel_price) && is_numeric($total_km)) {
             $fl_cost = ((($total_km / 100) * $conso) * $fuel_price);
-            return $fl_cost;
+            return ("<p>{$fl_cost} €</p>");
         } else
-            return "La consomation, le prix du ccarburant ainsi que le kilometrage peuvent uniquement être des nombres.";
+            return "<p>/!\ La consomation, le prix du ccarburant ainsi que le kilometrage peuvent uniquement être des nombres.</p>";
     }
 
     /**
@@ -80,16 +89,34 @@ class Calcul
      */
     function annual_fuel_cost($conso, $fuel_price, $total_km, $car_y)
     {
-        if (is_numeric($car_y)) {
-            $annual_cost = ($this->fuel_cost($conso, $fuel_price, $total_km) / $car_y);
-            return $annual_cost;
+        if (is_numeric($car_y) && $car_y != 0) {
+            $annual_cost = (((($total_km / 100) * $conso) * $fuel_price) / $car_y);
+            return ("<p>{$annual_cost} €</p>");
         } else
-            return "La durée d'utilisation du véhicule doit être un nombre.";
+            return "<p> /!\ La durée d'utilisation du véhicule doit être un nombre supérieur à 0.</p>";
     }
 
-
-    function total_cost()
+    function assurance_cost($assurance, $car_y)
     {
+        if (is_numeric($assurance) && $car_y != 0) {
+            $assu_total = (($assurance) * $car_y);
+            return ("<p>{$assu_total} €</p>");
+        } else
+            return "<p>/!\ La durée d'utilisation du véhicule doit être un nombre supérieur à 0 et le prix de l'assurance doit être un chiffre.</p>";
+    }
 
+    function assurance_annual_cost($assurance)
+    {
+        if (is_numeric($assurance)) {
+            $assu_total = ($assurance * 12);
+            return ("<p>{$assu_total} €</p>");
+        } else
+            return "<p>/!\ La durée d'utilisation du véhicule doit être un nombre supérieur à 0 et le prix de l'assurance doit être un chiffre.</p>";
+    }
+
+    function total_cost($init, $sell, $assurance, $car_y, $total_km, $conso, $fuel_price, $ct)
+    {
+        $total = ($init - $sell) + (($assurance * 12) * $car_y) + (((($total_km / 100) * $conso) * $fuel_price) + $ct);
+        return "<h1>{$total} €</h1>";
     }
 }
